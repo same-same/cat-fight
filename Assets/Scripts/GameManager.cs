@@ -38,7 +38,7 @@ namespace CatFight
 		{
             if (CurrentGSState == GeneratedSequenceStates.New){
                 // render
-                renderSequenceOnTextbox(generatedSequenceTextbox, sequences[0]);
+                renderSequenceOnTextbox(generatedSequenceTextbox, currentSequence);
 
                 // change to waiting
                 CurrentGSState = GeneratedSequenceStates.Waiting;
