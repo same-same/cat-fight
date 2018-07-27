@@ -4,21 +4,23 @@ using UnityEngine;
 
 namespace CatFight
 {
-	public static class GameManager : MonoBehaviour
+	public class GameManager : MonoBehaviour
 	{
 		public static float score;
 		public static int difficulty;
-		private ArrayList sequences;
-		private KeyCode[] currentSequence;
-		private int currentLength;
+		private static List<KeyCode[]> sequences;
+		public static KeyCode[] currentSequence;
+		private static int currentLength;
 		// Use this for initialization
 		void Start ()
 		{
 			score = 0.0f;
 			difficulty = 0;
-			sequences = new ArrayList ();
-			KeyCode[] sequence1 = new KeyCode[]{KeyCode.W, KeyCode.A, KeyCode.S, KeyCode.D};
-			sequences.Add(sequence1);
+			sequences = new List<KeyCode[]> ();
+			KeyCode[] difficulty0 = new KeyCode[]{KeyCode.W, KeyCode.A, KeyCode.S, KeyCode.D};
+			sequences.Add(difficulty0);
+			currentSequence = generateSequence ();
+			Debug.Log (currentSequence);
 		}
 	
 		// Update is called once per frame
@@ -28,8 +30,8 @@ namespace CatFight
 		}
 
 		//TODO
-		private KeyCode[] generateSequence () {
-			KeyCode[] availKeyCodes = sequences [GameManager.difficulty];
+		private static KeyCode[] generateSequence () {
+			KeyCode[] availKeyCodes = sequences[0];
 
 			if (GameManager.difficulty == 0) {
 				currentLength = 4;
@@ -38,11 +40,16 @@ namespace CatFight
 			}
 			KeyCode[] sequence = new KeyCode[currentLength];
 			for (int i = 0; i < currentLength; i++) {
-				int index = Random.Range (1, currentLength + 1);
+				int index = Random.Range (1, currentLength);
 				sequence [i] = availKeyCodes [index];
 			}
 			return sequence;
 
+		}
+
+		public static void nextSequence() {
+			currentSequence = generateSequence ();
+           
 		}
 
 

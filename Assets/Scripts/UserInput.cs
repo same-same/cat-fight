@@ -28,6 +28,7 @@ namespace CatFight
 		// Update is called once per frame
 		void Update ()
 		{
+			
 		
 		}
 
@@ -43,7 +44,7 @@ namespace CatFight
 
 		//TODO
 		private bool matchKey(KeyCode userKey, KeyCode requiredKey) {
-			
+			return false;
 		}
 
 		//TODO
