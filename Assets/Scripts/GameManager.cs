@@ -2,15 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-		
-	}
+namespace CatFight
+{
+	public static class GameManager : MonoBehaviour
+	{
+		public static float score;
+		public static int difficulty;
+		// Use this for initialization
+		void Start ()
+		{
+			score = 0.0f;
+			difficulty = 0;
+		}
 	
-	// Update is called once per frame
-	void Update () {
+		// Update is called once per frame
+		void Update ()
+		{
+		
+		}
 		
 	}
 }
