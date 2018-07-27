@@ -40,7 +40,7 @@ namespace CatFight
 			}
 			KeyCode[] sequence = new KeyCode[currentLength];
 			for (int i = 0; i < currentLength; i++) {
-				int index = Random.Range (1, currentLength + 1);
+				int index = Random.Range (1, currentLength);
 				sequence [i] = availKeyCodes [index];
 			}
 			return sequence;
@@ -49,7 +49,7 @@ namespace CatFight
 
 		public static void nextSequence() {
 			currentSequence = generateSequence ();
-
+           
 		}
 
 
