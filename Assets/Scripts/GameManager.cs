@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace CatFight
 {
@@ -11,6 +13,12 @@ namespace CatFight
 		private static List<KeyCode[]> sequences;
 		public static KeyCode[] currentSequence;
 		private static int currentLength;
+
+        public Text generatedSequenceTextbox;
+
+        private enum GeneratedSequenceStates { Waiting, New, Clear};
+        private GeneratedSequenceStates CurrentGSState;
+
 		// Use this for initialization
 		void Start ()
 		{
@@ -21,12 +29,20 @@ namespace CatFight
 			sequences.Add(difficulty0);
 			currentSequence = generateSequence ();
 			Debug.Log (currentSequence);
+
+            CurrentGSState = GeneratedSequenceStates.New;
 		}
 	
 		// Update is called once per frame
 		void Update ()
 		{
-		
+            if (CurrentGSState == GeneratedSequenceStates.New){
+                // render
+                renderSequenceOnTextbox(generatedSequenceTextbox, sequences[0]);
+
+                // change to waiting
+                CurrentGSState = GeneratedSequenceStates.Waiting;
+            }
 		}
 
 		//TODO
@@ -52,7 +68,14 @@ namespace CatFight
            
 		}
 
-
+        public static void renderSequenceOnTextbox(Text textbox, KeyCode[] sequence){
+            //textbox.text = sequence.ToString();
+            StringBuilder sb = new StringBuilder();
+            foreach(KeyCode letter in sequence){
+                sb.Append(letter);
+            }
+            textbox.text = sb.ToString();
+        }
 		
 	}
 }
