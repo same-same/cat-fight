@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace CatFight
 {
@@ -12,6 +13,7 @@ namespace CatFight
         //      - if user matches the sequence perfectly (w/ medium sequences)
         //      - if user doesn't match a sequence in time (w/ medium) etc. etc.
 
+        public Text subtitles;
         Animator animator;
 
         void Start() {
@@ -24,6 +26,10 @@ namespace CatFight
                 // fire trigger (trigger is found in Cat Prefab's Animation Controller)
                 animator.SetTrigger("CatMeow");
             }
+        }
+
+        public Text getSubtitles(){
+            return subtitles;
         }
     }
 }
