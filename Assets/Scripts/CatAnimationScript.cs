@@ -22,9 +22,15 @@ namespace CatFight
 
         void Update() {
             //TODO: change event to listen to player's state
-            if (Input.GetKeyDown(KeyCode.Space)) {
+            if (Input.GetKeyDown(KeyCode.UpArrow)) {
                 // fire trigger (trigger is found in Cat Prefab's Animation Controller)
                 animator.SetTrigger("CatMeow");
+            }
+
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                // fire trigger (trigger is found in Cat Prefab's Animation Controller)
+                animator.SetTrigger("CatWow");
             }
         }
 
