@@ -22,15 +22,31 @@ namespace CatFight
 
         void Update() {
             //TODO: change event to listen to player's state
-            if (Input.GetKeyDown(KeyCode.UpArrow)) {
+
+            // Trigger Sequence Win/Lose Animation
+            if (Input.GetKeyDown(KeyCode.LeftArrow)) {
                 // fire trigger (trigger is found in Cat Prefab's Animation Controller)
-                animator.SetTrigger("PlayerWin");
+                animator.SetTrigger("PlayerSequenceWin");
             }
 
-            if (Input.GetKeyDown(KeyCode.DownArrow))
-            {
+            if (Input.GetKeyDown(KeyCode.RightArrow)) {
                 // fire trigger (trigger is found in Cat Prefab's Animation Controller)
-                animator.SetTrigger("PlayerLose");
+                animator.SetTrigger("PlayerSequenceLose");
+            }
+
+            // Trigger difficulty change animations
+            if (Input.GetKeyDown(KeyCode.M)) {
+                animator.SetBool("EasyToMedium", true);
+            }
+
+            if (Input.GetKeyDown(KeyCode.H)) {
+                animator.SetBool("MediumToHard", true);
+            }
+
+            // Trigger Game Win animation
+            if (Input.GetKeyDown(KeyCode.UpArrow)) {
+                // fire trigger (trigger is found in Cat Prefab's Animation Controller)
+                animator.SetTrigger("PlayerGameWin");
             }
         }
 
