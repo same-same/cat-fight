@@ -24,16 +24,17 @@ namespace CatFight
             //TODO: change event to listen to player's state
             if (Input.GetKeyDown(KeyCode.UpArrow)) {
                 // fire trigger (trigger is found in Cat Prefab's Animation Controller)
-                animator.SetTrigger("CatMeow");
+                animator.SetTrigger("PlayerWin");
             }
 
             if (Input.GetKeyDown(KeyCode.DownArrow))
             {
                 // fire trigger (trigger is found in Cat Prefab's Animation Controller)
-                animator.SetTrigger("CatWow");
+                animator.SetTrigger("PlayerLose");
             }
         }
 
+        // note: primarily to pass Text object to StateMachineBehaviour
         public Text getSubtitles(){
             return subtitles;
         }
